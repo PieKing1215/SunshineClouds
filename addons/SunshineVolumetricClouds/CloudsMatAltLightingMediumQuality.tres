@@ -3,5 +3,5 @@
 [ext_resource type="Shader" path="res://addons/SunshineVolumetricClouds/AltLightingRayMarchedCloudsPost.gdshader" id="1_8d4i4"]
 
 [resource]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("1_8d4i4")

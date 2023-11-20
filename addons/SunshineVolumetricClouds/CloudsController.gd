@@ -113,7 +113,7 @@ func UpdateGlobalVariables():
 	
 	if (sunLight != null):
 		RenderingServer.global_shader_parameter_set("SunshineClouds_SunDirection", sunLight.global_transform.basis.z);
-		sunColorDefault = sunLight.light_color * sunLight.light_energy;
+		sunColorDefault = sunLight.light_color * pow(sunLight.light_energy, 2.0);
 	
 	if (worldEnvironment != null && worldEnvironment.environment != null):
 		useFogDefault = worldEnvironment.environment.fog_enabled;
@@ -124,5 +124,5 @@ func UpdateGlobalVariables():
 	
 	RenderingServer.global_shader_parameter_set("SunshineClouds_SunColor", sunColorDefault);
 	RenderingServer.global_shader_parameter_set("SunshineClouds_UseFog", useFogDefault);
-	RenderingServer.global_shader_parameter_set("SunshineClouds_FogColor", fogColorDefault);
-	RenderingServer.global_shader_parameter_set("SunshineClouds_AmbientColor", ambientColorDefault);
+	RenderingServer.global_shader_parameter_set("SunshineClouds_FogColor", fogColorDefault * pow(sunLight.light_energy, 2.0));
+	RenderingServer.global_shader_parameter_set("SunshineClouds_AmbientColor", ambientColorDefault * sunLight.light_energy);
