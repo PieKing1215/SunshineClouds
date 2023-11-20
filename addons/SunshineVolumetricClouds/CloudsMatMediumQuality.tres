@@ -5,8 +5,8 @@
 [resource]
 render_priority = -1
 shader = ExtResource("1_vmhg5")
-shader_parameter/StartingPointNoisePower = 5.0
-shader_parameter/ditherspeed = 100.0
+shader_parameter/StartingPointNoisePower = 2.0
+shader_parameter/ditherspeed = 1000.0
 shader_parameter/StepDepthBlendRange = 100.0
 shader_parameter/cloudSoftness = 0.25
 shader_parameter/CloudDensity = 4.0
