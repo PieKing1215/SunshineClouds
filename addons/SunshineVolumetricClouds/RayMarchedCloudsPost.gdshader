@@ -138,6 +138,9 @@ void fragment() {
 	//// Raymarching direction
 	vec3 dir = normalize(world - camera);
 	
+	// Bend dir to make clouds reach horizon
+	dir = normalize(dir + vec3(0.0, length(dir.xz) / 10.0, 0.0));
+	
 	vec3 view_dir = normalize(dir);
 	
 	vec3 origin = world.xyz;
@@ -179,6 +182,9 @@ void fragment() {
 	shadow /= float(LightingStepCount);
 	//currentDensity = clamp(currentDensity, 0.0, 1.0);
 	currentDensity = mix(clamp(currentDensity, 0.0, 1.0), 0.0, clamp(((cur_distance - CloudMaxDistance) / CloudMaxDistanceFalloff) + 1.0, 0.0, 1.0));
+	
+	// Fade out at horizon, but weaker when camera moves up
+	currentDensity = mix(currentDensity, currentDensity * clamp(pow(normalize(world - camera).y * 4.0, 0.5), 0.0, 1.0), clamp(20.0 / camera.y, 0.0, 1.0));
 	
 	//if (currentDensity < 0.001){
 		//discard;
