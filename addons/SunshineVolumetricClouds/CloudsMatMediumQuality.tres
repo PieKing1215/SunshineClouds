@@ -16,6 +16,6 @@ shader_parameter/CloudMaxDistanceFalloff = 3000.0
 shader_parameter/CloudFogMaxDistance = 4100.0
 shader_parameter/StepDistanceClose = 20.0
 shader_parameter/StepDistanceFar = 100.0
-shader_parameter/StepCount = 100
+shader_parameter/StepCount = 80
 shader_parameter/LightingStepDistance = 20.0
 shader_parameter/LightingStepCount = 25
